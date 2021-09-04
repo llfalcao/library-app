@@ -39,14 +39,18 @@ myLibrary.forEach((book) => {
 function openBookForm() {
     const container = document.querySelector('.container');
 
-    const formContainer = document.createElement('div');
+    const formContainer = document.createElement('form');
     formContainer.classList.add('form-container');
 
-    const form = document.createElement('form');
-    form.classList.add('new-book-form');
+    const fieldset = document.createElement('fieldset');
+    fieldset.classList.add('form-fieldset');
+
+    const legend = document.createElement('legend');
+    legend.innerText = 'Add a new book';
 
     const titleLabel = document.createElement('label');
     titleLabel.setAttribute('for', 'title');
+    titleLabel.innerText = 'Title';
 
     const titleInput = document.createElement('input');
     titleInput.setAttribute('type', 'text');
@@ -55,6 +59,7 @@ function openBookForm() {
 
     const authorLabel = document.createElement('label');
     authorLabel.setAttribute('for', 'author');
+    authorLabel.innerText = 'Author';
 
     const authorInput = document.createElement('input');
     authorInput.setAttribute('type', 'text');
@@ -63,27 +68,28 @@ function openBookForm() {
 
     const pagesLabel = document.createElement('label');
     pagesLabel.setAttribute('for', 'pages');
+    pagesLabel.innerText = 'Number of pages';
 
     const pagesInput = document.createElement('input');
     pagesInput.setAttribute('type', 'text');
     pagesInput.setAttribute('id', 'pages');
     pagesInput.setAttribute('name', 'pages');
 
-    const submit = document.createElement('input');
+    const submit = document.createElement('button');
     submit.setAttribute('type', 'submit');
-    submit.setAttribute('id', 'pages');
-    submit.setAttribute('name', 'pages');
-    submit.classList.add('btn');
+    submit.classList.add('btn', 'submit-form');
+    submit.innerText = 'Add Book';
 
-    form.appendChild(titleLabel);
-    form.appendChild(titleInput);
-    form.appendChild(authorLabel);
-    form.appendChild(authorInput);
-    form.appendChild(pagesLabel);
-    form.appendChild(pagesInput);
-    form.appendChild(submit);
+    fieldset.appendChild(legend);
+    fieldset.appendChild(titleLabel);
+    fieldset.appendChild(titleInput);
+    fieldset.appendChild(authorLabel);
+    fieldset.appendChild(authorInput);
+    fieldset.appendChild(pagesLabel);
+    fieldset.appendChild(pagesInput);
+    fieldset.appendChild(submit);
 
-    formContainer.appendChild(form);
+    formContainer.appendChild(fieldset);
     container.appendChild(formContainer);
 }
 
