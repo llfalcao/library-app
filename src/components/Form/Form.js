@@ -1,4 +1,4 @@
-export function BookForm() {
+export function Form() {
     return `
         <form class="form-container">
             <fieldset class="form-fieldset">

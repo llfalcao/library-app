@@ -11,13 +11,14 @@ body {
     border: 1px solid gray;
     position: relative;
     margin: auto;
+    min-height: 100vh;
 }
 
 /* Book grid */
 .grid {
     max-width: 100%;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     gap: 1rem;
     padding: 1rem;
 }
@@ -48,7 +49,7 @@ body {
     font-weight: 600;
 }
 
-/* Fixed button to add a new book */
+/* Button to add a new book */
 .new-book-btn {
     width: 4rem;
     aspect-ratio: 1;
@@ -60,7 +61,7 @@ body {
     background-position: 65%;
     background-size: 70%;
     background-repeat: no-repeat;
-    position: fixed;
+    position: absolute;
     bottom: 1rem;
     right: 1rem;
     cursor: pointer;
