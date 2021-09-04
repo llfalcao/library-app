@@ -1,14 +1,27 @@
 let myLibrary = [];
 
-function Book(title, author, numPages, isRead = false) {
+function Book(
+    title,
+    author,
+    numPages,
+    isRead = false,
+    cover = 'assets/book/cover-unavailable.png'
+) {
     this.title = title;
     this.author = author;
     this.numPages = numPages;
     this.isRead = isRead;
+    this.cover = cover;
 }
 
-function addBookToLibrary(title, author, numPages, isRead = false) {
-    const book = new Book(title, author, numPages, isRead);
+function addBookToLibrary(
+    title,
+    author,
+    numPages,
+    isRead = false,
+    cover = 'assets/book/cover-unavailable.png'
+) {
+    const book = new Book(title, author, numPages, isRead, cover);
     myLibrary.push(book);
     displayBooks();
 }
@@ -17,6 +30,10 @@ const bookGrid = document.querySelector('.grid');
 
 function displayBooks() {
     myLibrary.forEach((book) => {
+        const cover = document.createElement('img');
+        cover.setAttribute('src', book.cover);
+        cover.setAttribute('alt', book.title);
+
         const title = document.createElement('span');
         title.classList.add('title');
         title.innerText = book.title;
@@ -31,6 +48,7 @@ function displayBooks() {
 
         const card = document.createElement('div');
         card.classList.add('card');
+        card.appendChild(cover);
         card.appendChild(title);
         card.appendChild(author);
         card.appendChild(pages);
