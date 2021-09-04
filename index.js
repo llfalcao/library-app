@@ -23,38 +23,39 @@ function addBookToLibrary(
 ) {
     const book = new Book(title, author, numPages, isRead, cover);
     myLibrary.push(book);
-    displayBooks();
+    displayBook();
 }
 
 const bookGrid = document.querySelector('.grid');
 
-function displayBooks() {
-    myLibrary.forEach((book) => {
-        const cover = document.createElement('img');
-        cover.setAttribute('src', book.cover);
-        cover.setAttribute('alt', book.title);
+function displayBook() {
+    const book = myLibrary[myLibrary.length - 1];
 
-        const title = document.createElement('span');
-        title.classList.add('title');
-        title.innerText = book.title;
+    const cover = document.createElement('img');
+    cover.setAttribute('src', book.cover);
+    cover.setAttribute('alt', book.title);
+    cover.classList.add('cover');
 
-        const author = document.createElement('span');
-        author.classList.add('author');
-        author.innerText = book.author;
+    const title = document.createElement('span');
+    title.classList.add('title');
+    title.innerText = book.title;
 
-        const pages = document.createElement('span');
-        pages.classList.add('pages');
-        pages.innerText = book.numPages;
+    const author = document.createElement('span');
+    author.classList.add('author');
+    author.innerText = book.author;
 
-        const card = document.createElement('div');
-        card.classList.add('card');
-        card.appendChild(cover);
-        card.appendChild(title);
-        card.appendChild(author);
-        card.appendChild(pages);
+    const pages = document.createElement('span');
+    pages.classList.add('pages');
+    pages.innerText = `${book.numPages} pages`;
 
-        bookGrid.appendChild(card);
-    });
+    const card = document.createElement('div');
+    card.classList.add('card');
+    card.appendChild(cover);
+    card.appendChild(title);
+    card.appendChild(author);
+    card.appendChild(pages);
+
+    bookGrid.appendChild(card);
 }
 
 function openBookForm() {
