@@ -10,31 +10,34 @@ function Book(title, author, numPages, isRead = false) {
 function addBookToLibrary(title, author, numPages, isRead = false) {
     const book = new Book(title, author, numPages, isRead);
     myLibrary.push(book);
+    displayBooks();
 }
 
 const bookGrid = document.querySelector('.grid');
 
-myLibrary.forEach((book) => {
-    const title = document.createElement('span');
-    classList.add('title');
-    title.innerText = book.title;
+function displayBooks() {
+    myLibrary.forEach((book) => {
+        const title = document.createElement('span');
+        title.classList.add('title');
+        title.innerText = book.title;
 
-    const author = document.createElement('span');
-    author.classList.add('author');
-    author.innerText = book.author;
+        const author = document.createElement('span');
+        author.classList.add('author');
+        author.innerText = book.author;
 
-    const pages = document.createElement('span');
-    pages.classList.add('pages');
-    pages.innerText = book.numPages;
+        const pages = document.createElement('span');
+        pages.classList.add('pages');
+        pages.innerText = book.numPages;
 
-    const card = document.createElement('div');
-    card.classList.add('card');
-    card.appendChild(title);
-    card.appendChild(author);
-    card.appendChild(pages);
+        const card = document.createElement('div');
+        card.classList.add('card');
+        card.appendChild(title);
+        card.appendChild(author);
+        card.appendChild(pages);
 
-    bookGrid.appendChild(card);
-});
+        bookGrid.appendChild(card);
+    });
+}
 
 function openBookForm() {
     const container = document.querySelector('.container');
@@ -56,6 +59,7 @@ function openBookForm() {
     titleInput.setAttribute('type', 'text');
     titleInput.setAttribute('id', 'title');
     titleInput.setAttribute('name', 'title');
+    titleInput.classList.add('new-book-input');
 
     const authorLabel = document.createElement('label');
     authorLabel.setAttribute('for', 'author');
@@ -65,6 +69,7 @@ function openBookForm() {
     authorInput.setAttribute('type', 'text');
     authorInput.setAttribute('id', 'author');
     authorInput.setAttribute('name', 'author');
+    authorInput.classList.add('new-book-input');
 
     const pagesLabel = document.createElement('label');
     pagesLabel.setAttribute('for', 'pages');
@@ -74,9 +79,10 @@ function openBookForm() {
     pagesInput.setAttribute('type', 'text');
     pagesInput.setAttribute('id', 'pages');
     pagesInput.setAttribute('name', 'pages');
+    pagesInput.classList.add('new-book-input');
 
     const submit = document.createElement('button');
-    submit.setAttribute('type', 'submit');
+    submit.setAttribute('type', 'button');
     submit.classList.add('btn', 'submit-form');
     submit.innerText = 'Add Book';
 
@@ -91,6 +97,14 @@ function openBookForm() {
 
     formContainer.appendChild(fieldset);
     container.appendChild(formContainer);
+
+    const newBookSubmit = document.querySelector('.submit-form');
+    newBookSubmit.addEventListener('click', () => {
+        const title = document.getElementById('title').value;
+        const author = document.getElementById('author').value;
+        const numPages = document.getElementById('pages').value;
+        addBookToLibrary(title, author, numPages);
+    });
 }
 
 const newBookBtn = document.querySelector('.new-book-btn');
