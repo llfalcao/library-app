@@ -1,6 +1,7 @@
 @import url(_reset.css);
 
 body {
+    overflow-x: hidden;
     background-color: #303030;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
         Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
@@ -49,6 +50,31 @@ body {
     font-weight: 600;
 }
 
+.card-btn-container {
+    display: block;
+    text-align: center;
+}
+
+.card-btn {
+    width: 30px;
+    border-radius: 100%;
+    cursor: pointer;
+    margin: 1rem 0.8rem 0;
+}
+
+.read-status {
+    background-color: #fff;
+}
+
+.remove-book {
+    background: radial-gradient(
+        red 45%,
+        red calc(45% + 1px),
+        #fff calc(45% + 2px)
+    );
+    padding: 4px;
+}
+
 /* Button to add a new book */
 .new-book-btn {
     width: 4rem;
@@ -81,9 +107,9 @@ body {
     width: 350px;
     padding: 2rem;
     background: linear-gradient(
-        #cccccc 18%,
-        rgb(159, 159, 159) calc(18% + 1px),
-        rgb(226, 226, 226) 18%
+        #cccccc 16%,
+        rgb(159, 159, 159) calc(16% + 1px),
+        rgb(226, 226, 226) 16%
     );
     border-radius: 0.25rem;
     box-shadow: 0 0 2px 0px #0302027d, 0 0 4px 2px #979797;
@@ -91,11 +117,13 @@ body {
 
 .form-fieldset legend,
 .form-fieldset label,
+.form-fieldset p,
 .form-fieldset input,
-.form-fieldset button {
+.submit-form {
     display: block;
     width: 100%;
     padding: 0.5rem;
+    color: #2f2f2f;
 }
 
 .form-fieldset legend {
@@ -106,7 +134,8 @@ body {
     padding: 0 0 2rem;
 }
 
-.form-fieldset label {
+.form-fieldset label,
+.form-fieldset p {
     font-weight: 600;
     padding: 0.5rem 0;
 }
@@ -122,6 +151,29 @@ body {
 .form-fieldset input:focus {
     border: 2px solid #3460e6;
     background-color: #ececec;
+}
+
+.radio-container {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+}
+
+.radio-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 2rem 0 0;
+}
+
+.radio-item label {
+    padding: 0.5rem 0 0.6rem;
+}
+
+.radio-item input {
+    width: auto;
+    transform: scale(1.5);
+    margin: 0 0.8rem 0 0;
 }
 
 .submit-form {

@@ -4,12 +4,14 @@ import { Card } from './src/components/Card/Card.js';
 let myLibrary = [];
 
 function Book(
+    id,
     title,
     author,
     numPages,
     isRead = false,
     cover = 'assets/book/cover-unavailable.png'
 ) {
+    this.id = id;
     this.title = title;
     this.author = author;
     this.numPages = numPages;
@@ -18,6 +20,7 @@ function Book(
 }
 
 function addBookToLibrary(title, author, numPages, isRead, cover) {
+    let id = myLibrary.length;
     if (title === '') {
         title = 'Title not available';
     }
@@ -28,7 +31,7 @@ function addBookToLibrary(title, author, numPages, isRead, cover) {
         numPages = '#';
     }
 
-    const book = new Book(title, author, numPages, isRead, cover);
+    const book = new Book(id, title, author, numPages, isRead, cover);
     myLibrary.push(book);
     bookGrid.insertAdjacentHTML('beforeend', Card(book));
 }
@@ -48,8 +51,23 @@ newBookBtn.addEventListener('click', () => {
         const title = document.getElementById('title').value;
         const author = document.getElementById('author').value;
         const numPages = document.getElementById('pages').value;
+        let isRead;
 
-        addBookToLibrary(title, author, numPages);
+        try {
+            isRead = document.querySelector(
+                'input[name="read-status"]:checked'
+            ).id;
+        } catch (error) {
+            return;
+        }
+
+        if (isRead === 'is-read') {
+            isRead = true;
+        } else {
+            isRead = false;
+        }
+
+        addBookToLibrary(title, author, numPages, isRead);
 
         const form = document.querySelector('.form-container');
         container.removeChild(form);
