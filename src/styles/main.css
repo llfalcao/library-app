@@ -15,6 +15,69 @@ body {
     min-height: 100vh;
 }
 
+/* Header */
+.navbar {
+    background-color: #000;
+    height: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+.brand-container {
+    display: flex;
+    align-items: center;
+    margin-left: 3rem;
+}
+
+.logo {
+    max-width: 70px;
+    margin-right: 1rem;
+    position: relative;
+}
+
+.store-name {
+    color: #fff;
+    font-size: 1.9rem;
+    font-weight: 600;
+    position: relative;
+    transform: translate(0, -35%);
+}
+
+.store-name::after {
+    content: 'your personal library';
+    position: absolute;
+    left: 0;
+    bottom: -15px;
+    font-size: 0.8rem;
+    width: max-content;
+}
+
+/* GitHub Info */
+.info {
+    margin-right: 3rem;
+}
+
+.info a {
+    text-decoration: none;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.github-logo {
+    width: 1.5rem;
+    margin-right: 0.5rem;
+}
+
+.github-user {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 600;
+    font-size: 1.2rem;
+}
+
 /* Book grid */
 .grid {
     max-width: 100%;
@@ -221,5 +284,22 @@ body {
 
     .card {
         max-width: 180px;
+    }
+}
+
+@media (max-width: 480px) {
+    .brand-container,
+    .info {
+        transform: scale(0.8);
+        margin: 0;
+    }
+}
+
+@media (max-width: 300px) {
+    .store-name::after {
+        position: absolute;
+        max-width: 100px;
+        bottom: -30px;
+        line-height: 1.2;
     }
 }
