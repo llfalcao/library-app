@@ -2,6 +2,19 @@ import { Form } from './src/components/Form/Form.js';
 import { Card } from './src/components/Card/Card.js';
 
 let myLibrary = [];
+const container = document.querySelector('.container');
+const newBookBtn = document.querySelector('.new-book-btn');
+
+loadStoredLibrary();
+
+newBookBtn.addEventListener('click', () => {
+    if (document.querySelector('.form-container') !== null) {
+        return;
+    }
+    container.insertAdjacentHTML('beforeend', Form());
+
+    submitForm();
+});
 
 function Book(
     id,
@@ -23,20 +36,31 @@ Book.prototype.toggleStatus = function () {
     return (this.isRead = !this.isRead);
 };
 
-const container = document.querySelector('.container');
-const bookGrid = document.querySelector('.grid');
-const newBookBtn = document.querySelector('.new-book-btn');
+function loadStoredLibrary() {
+    let storedLibrary = localStorage.getItem('storedLibrary');
 
-newBookBtn.addEventListener('click', () => {
-    if (document.querySelector('.form-container') !== null) {
-        return;
+    if (storedLibrary !== null) {
+        storedLibrary = JSON.parse(storedLibrary);
+        storedLibrary.forEach((book) => {
+            if (book === null) return;
+            addBookToLibrary(
+                book.title,
+                book.author,
+                book.numPages,
+                book.isRead,
+                book.cover
+            );
+            toggleReadStatus();
+            removeCard();
+        });
     }
-    container.insertAdjacentHTML('beforeend', Form());
+}
 
-    createFormListener();
-});
+function saveLocalStorage() {
+    localStorage.setItem('storedLibrary', JSON.stringify(myLibrary));
+}
 
-function createFormListener() {
+function submitForm() {
     const formSubmit = document.querySelector('.submit-form');
     formSubmit.addEventListener('click', () => {
         const title = document.getElementById('title').value;
@@ -63,13 +87,15 @@ function createFormListener() {
         const form = document.querySelector('.form-container');
         container.removeChild(form);
 
-        changeReadStatus();
+        toggleReadStatus();
         removeCard();
     });
 }
 
 function addBookToLibrary(title, author, numPages, isRead, cover) {
+    const bookGrid = document.querySelector('.grid');
     let id = myLibrary.length;
+
     if (title === '') {
         title = 'Title not available';
     }
@@ -82,10 +108,11 @@ function addBookToLibrary(title, author, numPages, isRead, cover) {
 
     const book = new Book(id, title, author, numPages, isRead, cover);
     myLibrary.push(book);
+    saveLocalStorage();
     bookGrid.insertAdjacentHTML('beforeend', Card(book));
 }
 
-function changeReadStatus() {
+function toggleReadStatus() {
     const statusBtn = document.querySelectorAll('.read-status');
     statusBtn.forEach((btn) => {
         btn.addEventListener('click', (e) => {
@@ -93,6 +120,7 @@ function changeReadStatus() {
             const bookId = btn.getAttribute('data-book');
 
             myLibrary[bookId].toggleStatus();
+            saveLocalStorage();
             if (myLibrary[bookId].isRead) {
                 btn.setAttribute(
                     'src',
@@ -117,6 +145,7 @@ function removeCard() {
             const card = document.querySelector(`.card[data-book="${bookId}"`);
 
             myLibrary[bookId] = null;
+            saveLocalStorage();
             card.remove();
         });
     });
