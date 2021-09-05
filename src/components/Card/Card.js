@@ -14,11 +14,13 @@ export function Card(book) {
                     }
                     alt="Reading status"
                     class="card-btn read-status"
+                    data-book="${book.id}"
                 />
                 <img
                     src="data:image/svg+xml;base64,PHN2ZyBoZWlnaHQ9JzMwMHB4JyB3aWR0aD0nMzAwcHgnICBmaWxsPSIjZmZmZmZmIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4MCA4MCIgeD0iMHB4IiB5PSIwcHgiPjx0aXRsZT4wNF9hbmRyb2lkX3RyYXNoPC90aXRsZT48ZyBkYXRhLW5hbWU9IkxheWVyIDMiPjxwYXRoIGQ9Ik02MCwxNkg0OS44M2wtMS43LTIuNTVBMSwxLDAsMCwwLDQ3LjMsMTNIMzIuN2ExLDEsMCwwLDAtLjgzLjQ1TDMwLjE3LDE2SDIwYTEsMSwwLDAsMC0xLDF2NUg2MVYxN0ExLDEsMCwwLDAsNjAsMTZaIj48L3BhdGg+PHBhdGggZD0iTTIyLDYxYTYsNiwwLDAsMCw2LDZINTJhNiw2LDAsMCwwLDYtNlYyNUgyMloiPjwvcGF0aD48L2c+PC9zdmc+"
                     alt="Remove book"
-                    class="card-btn remove-book"
+                    class="card-btn remove-book-btn"
+                    data-book="${book.id}"
                 />
             </div>
         </div>
