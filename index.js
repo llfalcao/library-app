@@ -4,7 +4,10 @@ import { Card } from './src/components/Card/Card.js';
 let myLibrary = [];
 const container = document.querySelector('.container');
 const newBookBtn = document.querySelector('.new-book-btn');
+const welcomeSection = document.querySelector('.welcome');
+const myBooksTitle = document.querySelector('.page-title');
 
+myBooksTitle.classList.add('hidden');
 loadStoredLibrary();
 
 newBookBtn.addEventListener('click', () => {
@@ -22,7 +25,7 @@ function Book(
     author,
     numPages,
     isRead = false,
-    cover = 'assets/book/cover-unavailable.png'
+    cover = 'assets/images/cover-unavailable.png'
 ) {
     this.id = id;
     this.title = title;
@@ -38,7 +41,6 @@ Book.prototype.toggleStatus = function () {
 
 function loadStoredLibrary() {
     let storedLibrary = localStorage.getItem('storedLibrary');
-
     if (storedLibrary !== null) {
         storedLibrary = JSON.parse(storedLibrary);
         storedLibrary.forEach((book) => {
@@ -50,6 +52,8 @@ function loadStoredLibrary() {
                 book.isRead,
                 book.cover
             );
+            welcomeSection.remove();
+            myBooksTitle.classList.remove('hidden');
             toggleReadStatus();
             removeCard();
         });
@@ -57,6 +61,8 @@ function loadStoredLibrary() {
 }
 
 function saveLocalStorage() {
+    welcomeSection.remove();
+    myBooksTitle.classList.remove('hidden');
     localStorage.setItem('storedLibrary', JSON.stringify(myLibrary));
 }
 

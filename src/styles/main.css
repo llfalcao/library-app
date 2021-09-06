@@ -1,10 +1,46 @@
 @import url(_reset.css);
+@import url(_header.css);
 
 body {
     overflow-x: hidden;
-    background-color: #f0f0f0;
+    background: url('../../assets/images/background.jpg'), rgb(240, 240, 240);
+    background-position: center; /**/
+    background-size: cover;
+    background-blend-mode: overlay;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
         Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+/* "My Books" title */
+.page-title {
+    margin-left: 4rem;
+    margin-top: 2rem;
+    font-size: 2rem;
+    font-weight: 500;
+    color: rgb(44, 44, 44);
+    font-family: 'Fira Sans', sans-serif;
+    display: block;
+    position: relative;
+}
+
+.page-title::after {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    left: 0;
+    bottom: -10px;
+    background: linear-gradient(
+        to right,
+        rgba(33, 82, 176, 0.84),
+        rgb(148, 194, 221) 14rem,
+        #fff0 28rem
+    );
+}
+
+.hidden {
+    display: none;
 }
 
 /* Page container */
@@ -14,75 +50,6 @@ body {
     min-height: 100vh;
 }
 
-/* Header */
-.navbar {
-    background-color: #1c1c1c;
-    height: 100px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: relative;
-    box-shadow: 0 0 2px #000, 0 0 4px #000;
-}
-
-/* Logo + Store Name */
-.brand-container {
-    display: flex;
-    align-items: center;
-    margin-left: 3rem;
-    cursor: pointer;
-}
-
-.logo {
-    max-width: 70px;
-    margin-right: 1rem;
-    position: relative;
-}
-
-.store-name {
-    color: #fff;
-    font-size: 1.9rem;
-    font-weight: 600;
-    position: relative;
-    transform: translate(0, -35%);
-    font-family: 'Georama', sans-serif;
-}
-
-.store-name::after {
-    content: 'your personal library';
-    position: absolute;
-    left: 0;
-    bottom: -15px;
-    font-size: 0.8rem;
-    width: max-content;
-    letter-spacing: 1px;
-    font-weight: 300;
-}
-
-/* GitHub Info */
-.info {
-    margin-right: 3rem;
-}
-
-.info a {
-    text-decoration: none;
-    color: #fff;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.github-logo {
-    width: 1.5rem;
-    margin-right: 0.5rem;
-}
-
-.github-user {
-    font-family: 'JetBrains Mono', monospace;
-    font-weight: 600;
-    font-size: 1.2rem;
-}
-
 /* Book grid */
 .grid {
     max-width: 100%;
@@ -90,7 +57,43 @@ body {
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     column-gap: 1rem;
     row-gap: 2rem;
-    padding: 4rem;
+    padding: 2rem 4rem 4rem;
+}
+
+.welcome {
+    font-size: 2rem;
+    margin: auto;
+    margin-top: 5rem;
+    text-align: center;
+    font-family: 'Fira Sans', sans-serif;
+    line-height: 1.2;
+}
+
+.welcome h1 {
+    font-weight: 500;
+    padding-bottom: 1rem;
+}
+
+.welcome img {
+    position: absolute;
+    right: 0.5rem;
+    bottom: 5rem;
+    transform: scale(0.8) rotate(-1deg);
+    width: 100px;
+    animation: up-and-down 1s infinite;
+    opacity: 0.85;
+}
+
+@keyframes up-and-down {
+    0% {
+        bottom: 5rem;
+    }
+    50% {
+        bottom: 5.3rem;
+    }
+    100% {
+        bottom: 5rem;
+    }
 }
 
 /* Book card */
@@ -181,7 +184,7 @@ body {
     border-radius: 100%;
     border: none;
     box-shadow: 0 0 4px 2px #c6c6c6, 0 0 4px 1px #9d9d9d;
-    background-color: #3460e6;
+    background-color: #1d51a2;
     background-image: url(data:image/svg+xml;base64,PHN2ZyBoZWlnaHQ9JzMwMHB4JyB3aWR0aD0nMzAwcHgnICBmaWxsPSIjZmZmZmZmIiB4bWxuczpkYz0iaHR0cDovL3B1cmwub3JnL2RjL2VsZW1lbnRzLzEuMS8iIHhtbG5zOmNjPSJodHRwOi8vY3JlYXRpdmVjb21tb25zLm9yZy9ucyMiIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcvMTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyIgeG1sbnM6c3ZnPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczpzb2RpcG9kaT0iaHR0cDovL3NvZGlwb2RpLnNvdXJjZWZvcmdlLm5ldC9EVEQvc29kaXBvZGktMC5kdGQiIHhtbG5zOmlua3NjYXBlPSJodHRwOi8vd3d3Lmlua3NjYXBlLm9yZy9uYW1lc3BhY2VzL2lua3NjYXBlIiB2ZXJzaW9uPSIxLjEiIHg9IjBweCIgeT0iMHB4IiB2aWV3Qm94PSIwIDAgMTAwIDEwMCI+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMCwtOTUyLjM2MjE4KSI+PHBhdGggc3R5bGU9Im9wYWNpdHk6MTtjb2xvcjojMDAwMDAwO2ZpbGw6I2ZmZmZmZjtzdHJva2U6bm9uZTtzdHJva2Utd2lkdGg6My45OTk5OTk3NjAwMDAwMDAxMDtzdHJva2UtbGluZWNhcDpyb3VuZDtzdHJva2UtbGluZWpvaW46cm91bmQ7c3Ryb2tlLW1pdGVybGltaXQ6NDtzdHJva2Utb3BhY2l0eToxO3N0cm9rZS1kYXNoYXJyYXk6bm9uZTtzdHJva2UtZGFzaG9mZnNldDowO21hcmtlcjpub25lO3Zpc2liaWxpdHk6dmlzaWJsZTtkaXNwbGF5OmlubGluZTtvdmVyZmxvdzp2aXNpYmxlO2VuYWJsZS1iYWNrZ3JvdW5kOmFjY3VtdWxhdGUiIGQ9Ik0gMTMgOCBMIDEzIDgyIEwgNTAuMjE4NzUgODIgQyA0OS40NDMzNSA3OS44MDg2MTggNDkgNzcuNDU3IDQ5IDc1IEMgNDkgNzQuMzI4MjQyIDQ5LjAzMjA2NyA3My42NTU2MjQgNDkuMDkzNzUgNzMgTCAyMSA3MyBBIDIuMDAyMTk2MSAyLjAwMjE5NjEgMCAxIDEgMjAuODEyNSA2OSBBIDIuMDAwMTk5OCAyLjAwMDE5OTggMCAwIDEgMjEgNjkgTCA0OS44NzUgNjkgQyA1MC41MjA0MTggNjYuODMxMTggNTEuNTE2MTA4IDY0LjgxMzAxMiA1Mi43ODEyNSA2MyBMIDIxIDYzIEEgMi4wMDIxOTYxIDIuMDAyMTk2MSAwIDEgMSAyMC44MTI1IDU5IEEgMi4wMDAxOTk4IDIuMDAwMTk5OCAwIDAgMSAyMSA1OSBMIDU2LjQwNjI1IDU5IEMgNTkuMzUwNzk1IDU2LjQ5MTc1NCA2Mi45ODgwMjUgNTQuNzk0MTU1IDY3IDU0LjIxODc1IEwgNjcgMjYgTCA1MSAyNiBBIDIuMDAwMTk5OSAyLjAwMDE5OTkgMCAwIDEgNDkgMjQgTCA0OSA4IEwgMTMgOCB6IE0gNTMgOCBMIDUzIDIyIEwgNjcgMjIgTCA1MyA4IHogTSAyMC42MjUgMzkgQSAyLjAwNDkzNzggMi4wMDQ5Mzc4IDAgMCAxIDIwLjcxODc1IDM5IEEgMi4wMDIxOTYxIDIuMDAyMTk2MSAwIDAgMSAyMC44MTI1IDM5IEEgMi4wMDAxOTk4IDIuMDAwMTk5OCAwIDAgMSAyMSAzOSBMIDU5IDM5IEEgMi4wMDAxOTk4IDIuMDAwMTk5OCAwIDEgMSA1OSA0MyBMIDIxIDQzIEEgMi4wMDQ5Mzc4IDIuMDA0OTM3OCAwIDAgMSAyMC42MjUgMzkgeiBNIDIwLjYyNSA0OSBBIDIuMDA0OTM3OCAyLjAwNDkzNzggMCAwIDEgMjAuNzE4NzUgNDkgQSAyLjAwMjE5NjEgMi4wMDIxOTYxIDAgMCAxIDIwLjgxMjUgNDkgQSAyLjAwMDE5OTggMi4wMDAxOTk4IDAgMCAxIDIxIDQ5IEwgNTkgNDkgQSAyLjAwMDE5OTggMi4wMDAxOTk4IDAgMSAxIDU5IDUzIEwgMjEgNTMgQSAyLjAwNDkzNzggMi4wMDQ5Mzc4IDAgMCAxIDIwLjYyNSA0OSB6IE0gNzAgNTggQyA2MC42MTExNTkgNTggNTMgNjUuNjExMTU5IDUzIDc1IEMgNTMgODQuMzg4ODQxIDYwLjYxMTE1OSA5MiA3MCA5MiBDIDc5LjM4ODg0MSA5MiA4NyA4NC4zODg4NDEgODcgNzUgQyA4NyA2NS42MTExNTkgNzkuMzg4ODQxIDU4IDcwIDU4IHogTSA2OS43ODEyNSA2NS45Njg3NSBBIDIuMDAwMTk5OSAyLjAwMDE5OTkgMCAwIDEgNzIgNjggTCA3MiA3MyBMIDc3IDczIEEgMi4wMDAxOTk5IDIuMDAwMTk5OSAwIDEgMSA3NyA3NyBMIDcyIDc3IEwgNzIgODIgQSAyLjAwMDE5OTkgMi4wMDAxOTk5IDAgMSAxIDY4IDgyIEwgNjggNzcgTCA2MyA3NyBBIDIuMDAyMTk2MSAyLjAwMjE5NjEgMCAxIDEgNjIuODEyNSA3MyBBIDIuMDAwMTk5OSAyLjAwMDE5OTkgMCAwIDEgNjMgNzMgTCA2OCA3MyBMIDY4IDY4IEEgMi4wMDAxOTk5IDIuMDAwMTk5OSAwIDAgMSA2OS43ODEyNSA2NS45Njg3NSB6ICIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMCw5NTIuMzYyMTgpIj48L3BhdGg+PC9nPjwvc3ZnPg==);
     background-position: 65%;
     background-size: 70%;
@@ -194,11 +197,11 @@ body {
 }
 
 .new-book-btn:hover {
-    background-color: #3471e6;
+    background-color: #215dbb;
 }
 
 .new-book-btn:active {
-    background-color: #2c5ae8;
+    background-color: #17448a;
 }
 
 /* Form to add a new book */
@@ -210,9 +213,9 @@ body {
     width: 350px;
     padding: 2rem;
     background: linear-gradient(
-        #2e58bb 16%,
+        #1d51a2 16%,
         rgb(159, 159, 159) calc(16% + 1px),
-        rgb(230, 230, 230) 16%
+        rgb(253, 253, 253) 16%
     );
     border-radius: 0.25rem;
     box-shadow: 0 0 2px 0px #8484847d, 0 0 4px 2px #999;
@@ -283,7 +286,7 @@ body {
 .submit-form {
     cursor: pointer;
     font-weight: 600;
-    background-color: #3460e6;
+    background-color: #1d51a2;
     color: #fff;
     margin-top: 2rem;
     border-radius: 0.25rem;
@@ -291,11 +294,11 @@ body {
 }
 
 .submit-form:hover {
-    background-color: #3471e6;
+    background-color: #215dbb;
 }
 
 .submit-form:active {
-    background-color: #234cc7;
+    background-color: #17448a;
 }
 
 /* Responsive Design */
@@ -306,7 +309,7 @@ body {
 
     .new-book-btn {
         right: 50%;
-        transform: translateX(650px);
+        transform: translateX(665px);
     }
 }
 
@@ -318,6 +321,10 @@ body {
 
     .card {
         max-width: 180px;
+    }
+
+    .welcome {
+        font-size: 3.5vh;
     }
 }
 
@@ -347,7 +354,7 @@ body {
     .title,
     .author,
     .pages {
-        font-size: 2vh;
+        font-size: 2.3vh;
     }
 
     .card-btn-container {
@@ -357,6 +364,10 @@ body {
     .card-btn {
         margin: 0 0.8rem 0;
     }
+
+    .form-container {
+        transform: scale(0.85) translate(-60%, -55%);
+    }
 }
 
 @media (max-width: 350px) {
@@ -365,5 +376,9 @@ body {
         max-width: 100px;
         bottom: -30px;
         line-height: 1.2;
+    }
+
+    .welcome {
+        font-size: 6vw;
     }
 }

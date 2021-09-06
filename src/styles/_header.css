@@ -1,0 +1,68 @@
+/* Header */
+.navbar {
+    background-color: #1c1c1c;
+    height: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    box-shadow: 0 0 2px #000, 0 0 4px #000;
+}
+
+/* Logo + Store Name */
+.brand-container {
+    display: flex;
+    align-items: center;
+    margin-left: 3rem;
+    cursor: pointer;
+}
+
+.logo {
+    max-width: 70px;
+    margin-right: 1rem;
+    position: relative;
+}
+
+.store-name {
+    color: #fff;
+    font-size: 1.9rem;
+    font-weight: 600;
+    position: relative;
+    transform: translate(0, -35%);
+    font-family: 'Georama', sans-serif;
+}
+
+.store-name::after {
+    content: 'your personal library';
+    position: absolute;
+    left: 0;
+    bottom: -15px;
+    font-size: 0.8rem;
+    width: max-content;
+    letter-spacing: 1px;
+    font-weight: 300;
+}
+
+/* GitHub Info */
+.info {
+    margin-right: 3rem;
+}
+
+.info a {
+    text-decoration: none;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.github-logo {
+    width: 1.5rem;
+    margin-right: 0.5rem;
+}
+
+.github-user {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 600;
+    font-size: 1.2rem;
+}
