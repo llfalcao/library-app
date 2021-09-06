@@ -16,7 +16,7 @@ body {
 
 /* Header */
 .navbar {
-    background-color: #282828;
+    background-color: #1c1c1c;
     height: 100px;
     display: flex;
     justify-content: space-between;
@@ -30,6 +30,7 @@ body {
     display: flex;
     align-items: center;
     margin-left: 3rem;
+    cursor: pointer;
 }
 
 .logo {
@@ -44,6 +45,7 @@ body {
     font-weight: 600;
     position: relative;
     transform: translate(0, -35%);
+    font-family: 'Georama', sans-serif;
 }
 
 .store-name::after {
@@ -53,6 +55,8 @@ body {
     bottom: -15px;
     font-size: 0.8rem;
     width: max-content;
+    letter-spacing: 1px;
+    font-weight: 300;
 }
 
 /* GitHub Info */
@@ -108,23 +112,26 @@ body {
     display: block;
     text-align: center;
     margin-bottom: 0.2rem;
+    font-family: 'Fira Sans', sans-serif;
 }
 
 .cover {
     object-fit: contain;
     padding-top: 1px;
-    max-height: 200px;
+    max-height: 195px;
 }
 
 .title {
     margin-top: 0.8rem;
-    font-weight: 600;
+    font-weight: 500;
     font-size: 1rem;
 }
 
 .author,
 .pages {
-    font-size: 0.8rem;
+    font-size: 0.9rem;
+    font-weight: 400;
+    padding-top: 0.25rem;
 }
 
 /* Container for card buttons */
@@ -162,6 +169,12 @@ body {
 }
 
 /* Button to add a new book */
+.wrapper {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
 .new-book-btn {
     width: 4rem;
     aspect-ratio: 1;
@@ -173,7 +186,7 @@ body {
     background-position: 65%;
     background-size: 70%;
     background-repeat: no-repeat;
-    position: absolute;
+    position: fixed;
     bottom: 1rem;
     right: 1rem;
     cursor: pointer;
@@ -289,6 +302,11 @@ body {
 @media screen and (min-width: 1200px) {
     .container {
         max-width: 1360px;
+    }
+
+    .new-book-btn {
+        right: 50%;
+        transform: translateX(650px);
     }
 }
 

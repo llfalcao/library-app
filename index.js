@@ -70,7 +70,7 @@ function submitForm() {
 
         try {
             isRead = document.querySelector(
-                'input[name="read-status-btn"]:checked'
+                'input[name="read-status"]:checked'
             ).id;
         } catch (error) {
             return;
