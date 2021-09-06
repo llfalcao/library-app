@@ -99,7 +99,10 @@ function submitForm() {
             removeCard();
         } else {
             getBookCover(title).then((response) => {
-                let cover = `https://${response}`;
+                let cover;
+                if (response !== undefined) {
+                    cover = `https://${response}`;
+                }
                 addBookToLibrary(title, author, numPages, isRead, cover);
                 const form = document.querySelector('.form-container');
                 container.removeChild(form);
