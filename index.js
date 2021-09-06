@@ -99,7 +99,7 @@ function submitForm() {
             removeCard();
         } else {
             getBookCover(title).then((response) => {
-                let cover = response;
+                let cover = `https://${response}`;
                 addBookToLibrary(title, author, numPages, isRead, cover);
                 const form = document.querySelector('.form-container');
                 container.removeChild(form);
@@ -178,7 +178,7 @@ const getBookCover = async function (query) {
             .then((data) => {
                 return data.items[0].volumeInfo.imageLinks.thumbnail;
             });
-        return response;
+        return response.substring(7);
     } catch (error) {
         alert('No image found.');
     }
