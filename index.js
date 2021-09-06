@@ -70,7 +70,7 @@ function submitForm() {
 
         try {
             isRead = document.querySelector(
-                'input[name="read-status"]:checked'
+                'input[name="read-status-btn"]:checked'
             ).id;
         } catch (error) {
             return;
@@ -82,13 +82,22 @@ function submitForm() {
             isRead = false;
         }
 
-        addBookToLibrary(title, author, numPages, isRead);
-
-        const form = document.querySelector('.form-container');
-        container.removeChild(form);
-
-        toggleReadStatus();
-        removeCard();
+        if (title === '') {
+            addBookToLibrary(title, author, numPages, isRead);
+            const form = document.querySelector('.form-container');
+            container.removeChild(form);
+            toggleReadStatus();
+            removeCard();
+        } else {
+            getBookCover(title).then((response) => {
+                let cover = response;
+                addBookToLibrary(title, author, numPages, isRead, cover);
+                const form = document.querySelector('.form-container');
+                container.removeChild(form);
+                toggleReadStatus();
+                removeCard();
+            });
+        }
     });
 }
 
@@ -113,7 +122,7 @@ function addBookToLibrary(title, author, numPages, isRead, cover) {
 }
 
 function toggleReadStatus() {
-    const statusBtn = document.querySelectorAll('.read-status');
+    const statusBtn = document.querySelectorAll('.read-status-btn');
     statusBtn.forEach((btn) => {
         btn.addEventListener('click', (e) => {
             e.stopImmediatePropagation();
@@ -150,3 +159,18 @@ function removeCard() {
         });
     });
 }
+
+const getBookCover = async function (query) {
+    try {
+        const response = await fetch(
+            `https://www.googleapis.com/books/v1/volumes?q=${query}&maxResults=1`
+        )
+            .then((response) => response.json())
+            .then((data) => {
+                return data.items[0].volumeInfo.imageLinks.thumbnail;
+            });
+        return response;
+    } catch (error) {
+        alert('No image found.');
+    }
+};
