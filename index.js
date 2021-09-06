@@ -5,6 +5,7 @@ let myLibrary = [];
 const container = document.querySelector('.container');
 const newBookBtn = document.querySelector('.new-book-btn');
 const welcomeSection = document.querySelector('.welcome');
+const arrowIcon = document.querySelector('.arrow');
 const myBooksTitle = document.querySelector('.page-title');
 
 myBooksTitle.classList.add('hidden');
@@ -53,6 +54,7 @@ function loadStoredLibrary() {
                 book.cover
             );
             welcomeSection.remove();
+            arrowIcon.remove();
             myBooksTitle.classList.remove('hidden');
             toggleReadStatus();
             removeCard();
@@ -62,6 +64,7 @@ function loadStoredLibrary() {
 
 function saveLocalStorage() {
     welcomeSection.remove();
+    arrowIcon.remove();
     myBooksTitle.classList.remove('hidden');
     localStorage.setItem('storedLibrary', JSON.stringify(myLibrary));
 }

@@ -1,0 +1,108 @@
+/* Form to add a new book */
+.form-container {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 350px;
+    padding: 2rem;
+    background: linear-gradient(
+        #1d51a2 16%,
+        rgb(159, 159, 159) calc(16% + 1px),
+        rgb(253, 253, 253) 16%
+    );
+    border-radius: 0.25rem;
+    box-shadow: 0 0 2px 0px #8484847d, 0 0 4px 2px #999;
+    animation: down 0.5s;
+}
+
+@keyframes down {
+    0% {
+        transform: translate(-50%, -70%);
+        opacity: 0;
+    }
+    100% {
+        transform: translate(-50%, -50%);
+        opacity: 1;
+    }
+}
+
+.form-fieldset legend,
+.form-fieldset label,
+.form-fieldset p,
+.form-fieldset input,
+.submit-form {
+    display: block;
+    width: 100%;
+    padding: 0.5rem;
+    color: #2f2f2f;
+}
+
+.form-fieldset legend {
+    font-size: 1.2rem;
+    font-weight: 600;
+    border-top-left-radius: 0.25rem;
+    border-top-right-radius: 0.25rem;
+    padding: 0 0 2rem;
+    color: #fff;
+}
+
+.form-fieldset label,
+.form-fieldset p {
+    font-weight: 600;
+    padding: 0.5rem 0;
+}
+
+.form-fieldset input {
+    border: 2px solid #9f9f9f;
+    background-color: transparent;
+    transition: 0.2s;
+    border-radius: 0.25rem;
+    margin-bottom: 0.5rem;
+}
+
+.form-fieldset input:focus {
+    border: 2px solid #3460e6;
+    background-color: #ececec;
+}
+
+.radio-container {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+}
+
+.radio-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 2rem 0 0;
+}
+
+.radio-item label {
+    padding: 0.5rem 0 0.6rem;
+}
+
+.radio-item input {
+    width: auto;
+    transform: scale(1.5);
+    margin: 0 0.8rem 0 0;
+}
+
+.submit-form {
+    cursor: pointer;
+    font-weight: 600;
+    background-color: #1d51a2;
+    color: #fff;
+    margin-top: 2rem;
+    border-radius: 0.25rem;
+    transition: 0.2s;
+}
+
+.submit-form:hover {
+    background-color: #215dbb;
+}
+
+.submit-form:active {
+    background-color: #17448a;
+}

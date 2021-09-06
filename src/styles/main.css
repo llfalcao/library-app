@@ -1,10 +1,12 @@
 @import url(_reset.css);
 @import url(_header.css);
+@import url(_card.css);
+@import url(_form.css);
 
 body {
     overflow-x: hidden;
     background: url('../../assets/images/background.jpg'), rgb(240, 240, 240);
-    background-position: center; /**/
+    background-position: center;
     background-size: cover;
     background-blend-mode: overlay;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
@@ -35,7 +37,7 @@ body {
         to right,
         rgba(33, 82, 176, 0.84),
         rgb(148, 194, 221) 14rem,
-        #fff0 28rem
+        transparent 28rem
     );
 }
 
@@ -74,12 +76,19 @@ body {
     padding-bottom: 1rem;
 }
 
-.welcome img {
+/* Fixed button to add a new book */
+.wrapper {
     position: absolute;
-    right: 0.5rem;
-    bottom: 5rem;
-    transform: scale(0.8) rotate(-1deg);
-    width: 100px;
+    bottom: 0;
+    right: 0;
+    text-align: right;
+}
+
+.arrow {
+    position: fixed;
+    height: 8vh;
+    bottom: 2rem;
+    transform: translate(-150%, -5vh);
     animation: up-and-down 1s infinite;
     opacity: 0.85;
 }
@@ -96,90 +105,8 @@ body {
     }
 }
 
-/* Book card */
-.card {
-    background-color: #fbfbfb;
-    border-radius: 0.25rem;
-    width: 200px;
-    box-shadow: 0 0 2px 0px #9f9f9f7d, 0 0 4px 2px #e1e1e1;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 350px;
-}
-
-.cover,
-.title,
-.author,
-.pages {
-    display: block;
-    text-align: center;
-    margin-bottom: 0.2rem;
-    font-family: 'Fira Sans', sans-serif;
-}
-
-.cover {
-    object-fit: contain;
-    padding-top: 1px;
-    max-height: 195px;
-}
-
-.title {
-    margin-top: 0.8rem;
-    font-weight: 500;
-    font-size: 1rem;
-}
-
-.author,
-.pages {
-    font-size: 0.9rem;
-    font-weight: 400;
-    padding-top: 0.25rem;
-}
-
-/* Container for card buttons */
-.card-btn-container {
-    display: block;
-    text-align: center;
-    background-color: #eee;
-    border-bottom-left-radius: 0.25rem;
-    border-bottom-right-radius: 0.25rem;
-    padding: 1rem 0;
-    margin-top: 1rem;
-}
-
-.card-btn {
-    width: 30px;
-    border-radius: 100%;
-    cursor: pointer;
-    margin: 0 0.8rem;
-    box-shadow: 0 0 2px 0px #9f9f9f7d, 0 0 4px 2px #e1e1e1;
-}
-
-/* Button for toggling read status */
-.read-status-btn {
-    background-color: #fff;
-}
-
-/* Button for removing a book/card */
-.remove-book-btn {
-    background: radial-gradient(
-        #e03636 45%,
-        #e03636 calc(45% + 1px),
-        #fff calc(45% + 2px)
-    );
-    padding: 4px;
-}
-
-/* Button to add a new book */
-.wrapper {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-}
-
 .new-book-btn {
-    width: 4rem;
+    height: 9vh;
     aspect-ratio: 1;
     border-radius: 100%;
     border: none;
@@ -190,8 +117,8 @@ body {
     background-size: 70%;
     background-repeat: no-repeat;
     position: fixed;
-    bottom: 1rem;
-    right: 1rem;
+    bottom: 2rem;
+    transform: translateX(-130%);
     cursor: pointer;
     transition: 0.3s;
 }
@@ -204,112 +131,28 @@ body {
     background-color: #17448a;
 }
 
-/* Form to add a new book */
-.form-container {
-    position: fixed;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    width: 350px;
-    padding: 2rem;
-    background: linear-gradient(
-        #1d51a2 16%,
-        rgb(159, 159, 159) calc(16% + 1px),
-        rgb(253, 253, 253) 16%
-    );
-    border-radius: 0.25rem;
-    box-shadow: 0 0 2px 0px #8484847d, 0 0 4px 2px #999;
-}
-
-.form-fieldset legend,
-.form-fieldset label,
-.form-fieldset p,
-.form-fieldset input,
-.submit-form {
-    display: block;
-    width: 100%;
-    padding: 0.5rem;
-    color: #2f2f2f;
-}
-
-.form-fieldset legend {
-    font-size: 1.2rem;
-    font-weight: 600;
-    border-top-left-radius: 0.25rem;
-    border-top-right-radius: 0.25rem;
-    padding: 0 0 2rem;
-    color: #fff;
-}
-
-.form-fieldset label,
-.form-fieldset p {
-    font-weight: 600;
-    padding: 0.5rem 0;
-}
-
-.form-fieldset input {
-    border: 2px solid #9f9f9f;
-    background-color: transparent;
-    transition: 0.2s;
-    border-radius: 0.25rem;
-    margin-bottom: 0.5rem;
-}
-
-.form-fieldset input:focus {
-    border: 2px solid #3460e6;
-    background-color: #ececec;
-}
-
-.radio-container {
-    display: flex;
-    justify-content: flex-start;
-    width: 100%;
-}
-
-.radio-item {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 0 2rem 0 0;
-}
-
-.radio-item label {
-    padding: 0.5rem 0 0.6rem;
-}
-
-.radio-item input {
-    width: auto;
-    transform: scale(1.5);
-    margin: 0 0.8rem 0 0;
-}
-
-.submit-form {
-    cursor: pointer;
-    font-weight: 600;
-    background-color: #1d51a2;
-    color: #fff;
-    margin-top: 2rem;
-    border-radius: 0.25rem;
-    transition: 0.2s;
-}
-
-.submit-form:hover {
-    background-color: #215dbb;
-}
-
-.submit-form:active {
-    background-color: #17448a;
-}
-
 /* Responsive Design */
 @media screen and (min-width: 1200px) {
     .container {
         max-width: 1360px;
     }
+}
 
-    .new-book-btn {
-        right: 50%;
-        transform: translateX(665px);
+@media screen and (min-height: 1080px) {
+    body {
+        background: url('../../assets/images/background.jpg'),
+            rgb(248, 248, 248);
+        background-position: center;
+        background-size: cover;
+        background-blend-mode: overlay;
+    }
+
+    .arrow {
+        transform: translate(-150%, -7vh);
+    }
+
+    .wrapper {
+        transform: scale(0.8);
     }
 }
 
@@ -325,6 +168,16 @@ body {
 
     .welcome {
         font-size: 3.5vh;
+    }
+
+    .page-title::after {
+        width: 70%;
+        background: linear-gradient(
+            to right,
+            rgba(33, 82, 176, 0.84),
+            rgb(148, 194, 221) 30vw,
+            transparent 50vw
+        );
     }
 }
 
@@ -380,5 +233,9 @@ body {
 
     .welcome {
         font-size: 6vw;
+    }
+
+    .form-container {
+        transform: scale(0.7) translate(-72%, -75%);
     }
 }
