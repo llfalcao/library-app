@@ -190,12 +190,14 @@ body {
 
     .grid {
         justify-items: center;
-        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+        padding: 10% 5%;
+        grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
     }
 
     .card {
-        width: 200px;
-        height: 285px;
+        width: 40vw;
+        height: auto;
+        justify-content: none;
     }
 
     .cover {
@@ -207,7 +209,7 @@ body {
     .title,
     .author,
     .pages {
-        font-size: 2.3vh;
+        font-size: 1.6vh;
     }
 
     .card-btn-container {
@@ -215,11 +217,11 @@ body {
     }
 
     .card-btn {
-        margin: 0 0.8rem 0;
+        margin: 0 0.25rem 0;
     }
 
     .form-container {
-        transform: scale(0.85) translate(-60%, -55%);
+        width: 320px;
     }
 }
 
@@ -237,5 +239,11 @@ body {
 
     .form-container {
         transform: scale(0.7) translate(-72%, -75%);
+    }
+
+    .card {
+        width: 80vw;
+        height: auto;
+        justify-content: none;
     }
 }

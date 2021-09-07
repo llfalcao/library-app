@@ -13,12 +13,12 @@
     );
     border-radius: 0.25rem;
     box-shadow: 0 0 2px 0px #8484847d, 0 0 4px 2px #999;
-    animation: down 0.5s;
+    animation: down 0.3s;
 }
 
 @keyframes down {
     0% {
-        transform: translate(-50%, -70%);
+        transform: translate(-50%, -55%);
         opacity: 0;
     }
     100% {
