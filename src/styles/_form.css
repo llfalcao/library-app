@@ -7,12 +7,12 @@
     width: 350px;
     padding: 2rem;
     background: linear-gradient(
-        #1d51a2 16%,
-        rgb(159, 159, 159) calc(16% + 1px),
+        #fff 16%,
+        rgb(168, 168, 168) calc(16% + 1px),
         rgb(253, 253, 253) 16%
     );
     border-radius: 0.25rem;
-    box-shadow: 0 0 2px 0px #8484847d, 0 0 4px 2px #999;
+    box-shadow: 0 0 0px 0px #0000007d, 0 0 5px 2px #8e8e8e;
     animation: down 0.3s;
 }
 
@@ -44,7 +44,7 @@
     border-top-left-radius: 0.25rem;
     border-top-right-radius: 0.25rem;
     padding: 0 0 2rem;
-    color: #fff;
+    color: #1d51a2;
 }
 
 .form-fieldset label,
