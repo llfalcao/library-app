@@ -1,6 +1,21 @@
 import { Form } from './src/components/Form/Form.js';
 import { Card } from './src/components/Card/Card.js';
 
+class Book {
+    constructor(id, title, author, numPages, isRead, cover) {
+        this.id = id;
+        this.title = title;
+        this.author = author;
+        this.numPages = numPages;
+        this.isRead = isRead || false;
+        this.cover = cover || 'assets/images/cover-unavailable.png';
+    }
+
+    toggleStatus = function () {
+        this.isRead = !this.isRead;
+    };
+}
+
 let myLibrary = [];
 const container = document.querySelector('.container');
 const newBookBtn = document.querySelector('.new-book-btn');
@@ -19,26 +34,6 @@ newBookBtn.addEventListener('click', () => {
 
     submitForm();
 });
-
-function Book(
-    id,
-    title,
-    author,
-    numPages,
-    isRead = false,
-    cover = 'assets/images/cover-unavailable.png'
-) {
-    this.id = id;
-    this.title = title;
-    this.author = author;
-    this.numPages = numPages;
-    this.isRead = isRead;
-    this.cover = cover;
-}
-
-Book.prototype.toggleStatus = function () {
-    return (this.isRead = !this.isRead);
-};
 
 function loadStoredLibrary() {
     let storedLibrary = localStorage.getItem('storedLibrary');
